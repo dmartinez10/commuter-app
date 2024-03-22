@@ -1,0 +1,6 @@
+module Pods_CommuterApp {
+  umbrella header "Pods-CommuterApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
