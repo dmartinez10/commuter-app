@@ -1,0 +1,11 @@
+{
+    "build": {
+      "development": {
+        "distribution": "internal"
+      },
+      "production": {
+        "distribution": "store"
+      }
+    }
+  }
+  
