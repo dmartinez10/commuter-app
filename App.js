@@ -3,20 +3,26 @@ import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
 
 export default function App() {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogin = () => {
-    if (username.trim() === '' || password.trim() === '') {
-      setErrorMessage('Please enter both username and password.');
+    if ((username.trim() === '' || password.trim() === '') && (email.trim() === '' || password.trim() === '')) {
+      setErrorMessage('Please enter both username or email and password.');
       return;
     }
 
-    if (username === 'user' && password === 'password') {
+    if ((username === 'user' || email === 'user@example.com') && password === 'password') {
       Alert.alert('Login Successful', 'Welcome to The CommuterApp!');
     } else {
       setErrorMessage('Invalid username or password.');
     }
+  };
+
+  const handleCreateAccount = () => {
+    // Your logic to create a new account, e.g., call an API, save to a database, etc.
+    Alert.alert('Account Created', 'Your account has been created successfully!');
   };
 
   return (
@@ -32,12 +38,19 @@ export default function App() {
         />
         <TextInput
           style={styles.input}
+          placeholder="Email"
+          onChangeText={setEmail}
+          value={email}
+        />
+        <TextInput
+          style={styles.input}
           placeholder="Password"
           onChangeText={setPassword}
           value={password}
           secureTextEntry
         />
         <Button title="Login" onPress={handleLogin} />
+        <Button title="Create Account" onPress={handleCreateAccount} />
         {errorMessage !== '' && <Text style={styles.error}>{errorMessage}</Text>}
       </View>
     </View>
@@ -68,3 +81,4 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
+
