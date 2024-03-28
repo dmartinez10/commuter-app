@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
+import { createUserAccount } from './FirebaseService'; // Import the function
 
 export default function App() {
   const [username, setUsername] = useState('');
@@ -20,9 +21,20 @@ export default function App() {
     }
   };
 
-  const handleCreateAccount = () => {
-    // Your logic to create a new account, e.g., call an API, save to a database, etc.
-    Alert.alert('Account Created', 'Your account has been created successfully!');
+  const handleCreateAccount = async () => {
+    const userData = {
+      username: username,
+      email: email,
+      password: password, // Consider using Firebase Authentication for password handling
+      createdAt: new Date()
+    };
+
+    const success = await createUserAccount(userData);
+    if (success) {
+      Alert.alert('Account Created', 'Your account has been created successfully!');
+    } else {
+      Alert.alert('Error', 'Failed to create account.');
+    }
   };
 
   return (
@@ -81,4 +93,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
+
 
