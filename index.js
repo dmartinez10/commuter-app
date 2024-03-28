@@ -1,9 +1,15 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
-import App from './App'; // Assuming your main component is in App.js
+import App from './App';
+import { name as appName } from './app.json';
+import { initializeApp } from '@firebase/app';
 
-const Main = () => {
-  return <App />;
+// Initialize Firebase
+const firebaseConfig = {
+  // your firebase config
 };
+initializeApp(firebaseConfig);
 
-AppRegistry.registerComponent('CommuterApp', () => Main);
+const Root = () => <App />;
+
+AppRegistry.registerComponent(appName, () => Root);

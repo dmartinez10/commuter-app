@@ -1,39 +1,35 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
-import { createUserAccount } from './FirebaseService'; // Import the function
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from './FirebaseService'; // Import the Firebase auth service
+import { useNavigation } from '@react-navigation/native';
 
 export default function App() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigation = useNavigation();
 
   const handleLogin = () => {
-    if ((username.trim() === '' || password.trim() === '') && (email.trim() === '' || password.trim() === '')) {
-      setErrorMessage('Please enter both username or email and password.');
-      return;
-    }
-
-    if ((username === 'user' || email === 'user@example.com') && password === 'password') {
-      Alert.alert('Login Successful', 'Welcome to The CommuterApp!');
-    } else {
-      setErrorMessage('Invalid username or password.');
-    }
+    // Your login logic here
   };
 
   const handleCreateAccount = async () => {
-    const userData = {
-      username: username,
-      email: email,
-      password: password, // Consider using Firebase Authentication for password handling
-      createdAt: new Date()
-    };
+    try {
+      if (!username || !email || !password) {
+        setErrorMessage('Please fill out all fields.');
+        return;
+      }
 
-    const success = await createUserAccount(userData);
-    if (success) {
-      Alert.alert('Account Created', 'Your account has been created successfully!');
-    } else {
-      Alert.alert('Error', 'Failed to create account.');
+      await createUserWithEmailAndPassword(auth, email, password);
+
+      Alert.alert('Account Created', 'Your account has been created successfully!', [
+        { text: 'OK', onPress: () => navigation.navigate('Home') }
+      ]);
+    } catch (error) {
+      console.error('Failed to create account:', error.message);
+      setErrorMessage('Failed to create account. Please try again.');
     }
   };
 
@@ -93,5 +89,3 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
-
-
