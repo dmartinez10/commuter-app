@@ -7,7 +7,7 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "build": "expo build:android && expo build:ios"
+    "build": "eas build -p all"
   },
   "dependencies": {
     "expo": "^50.0.14",
