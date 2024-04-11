@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert, TouchableOpacity } from 'react-native';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { StyleSheet, Text, View, TextInput, Alert, TouchableOpacity } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './FirebaseService'; // Import the Firebase auth service
 import { NavigationContainer } from '@react-navigation/native';
@@ -13,7 +14,7 @@ function HomeScreen() {
       <Text style={styles.title}>Welcome to The CommuterApp</Text>
       <Text style={styles.subtitle}>Thank you for joining us!</Text>
     </View>
-  );
+  );     
 }
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+  const db = getFirestore(); // Initialize Firestore
+
   const handleCreateAccount = async () => {
     try {
       if (!username || !email || !password) {
@@ -29,7 +32,15 @@ function App() {
         return;
       }
 
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Add a new document with a generated ID in Firestore
+      await addDoc(collection(db, "users"), {
+        uid: user.uid,
+        username: username,
+        email: email
+      });
 
       Alert.alert('Account Created', 'Your account has been created successfully!');
     } catch (error) {
