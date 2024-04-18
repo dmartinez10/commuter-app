@@ -4,6 +4,7 @@ import { registerRootComponent } from 'expo';
 import App from './App';
 import { name as appName } from './app.json';
 import { initializeApp } from '@firebase/app';
+import './FirebaseService'; // Import Firebase initialization
 
 // Define your Firebase configuration
 const firebaseConfig = {
@@ -26,4 +27,5 @@ const Root = () => <App />;
 AppRegistry.registerComponent(appName, () => Root);
 
 // Register the main component with Expo
-registerRootComponent(Root);  // Notice here we are passing Root to Expo
+registerRootComponent(Root);
+
