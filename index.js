@@ -1,6 +1,6 @@
-<<<<<<< Updated upstream
 import React from 'react';
 import { AppRegistry } from 'react-native';
+import { registerRootComponent } from 'expo';
 import App from './App';
 import { name as appName } from './app.json';
 import { initializeApp } from '@firebase/app';
@@ -22,19 +22,8 @@ initializeApp(firebaseConfig);
 // Root component
 const Root = () => <App />;
 
-// Register the main component
+// Register the main component with React Native
 AppRegistry.registerComponent(appName, () => Root);
-<<<<<<< HEAD
 
-=======
-=======
-import { registerRootComponent } from 'expo';
-
-import App from './App';
-
-// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-// It also ensures that whether you load the app in Expo Go or in a native build,
-// the environment is set up appropriately
-registerRootComponent(App);
->>>>>>> Stashed changes
->>>>>>> 8ef7ca05 (Resolve merge conflicts in index.js)
+// Register the main component with Expo
+registerRootComponent(Root);  // Notice here we are passing Root to Expo
