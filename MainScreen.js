@@ -4,15 +4,6 @@ import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './FirebaseService'; 
 
-function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to The CommuterApp</Text>
-      <Text style={styles.subtitle}>Thank you for joining us!</Text>
-    </View>
-  );
-}
-
 function MainScreen() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -27,13 +18,11 @@ function MainScreen() {
         return;
       }
 
-      // Simple email validation
       if (!/\S+@\S+\.\S+/.test(email)) {
         setErrorMessage('Please enter a valid email address.');
         return;
       }
 
-      // Basic password strength validation
       if (password.length < 6) {
         setErrorMessage('Password should be at least 6 characters long.');
         return;
@@ -94,50 +83,4 @@ function MainScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    padding: 20,
-  },
-  formContainer: {
-    width: '100%',
-    maxWidth: 400,
-  },
-  input: {
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingLeft: 10,
-    marginBottom: 10,
-  },
-  button: {
-    backgroundColor: '#007AFF',
-    paddingVertical: 10,
-    borderRadius: 5,
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  error: {
-    color: 'red',
-    marginTop: 10,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  subtitle: {
-    fontSize: 16,
-    marginBottom: 20,
-  },
-});
-
-export { HomeScreen, MainScreen };
+export default MainScreen;
