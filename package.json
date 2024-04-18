@@ -9,6 +9,7 @@
     "build": "eas build -p all"
   },
   "dependencies": {
+    "@firebase/app": "^0.10.1",
     "@firebase/firestore": "^4.5.1",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/stack": "^6.3.29",
