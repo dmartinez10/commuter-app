@@ -10,7 +10,7 @@ function HomeScreen() {
       <Text style={styles.title}>Welcome to The CommuterApp</Text>
       <Text style={styles.subtitle}>Thank you for joining us!</Text>
     </View>
-  );     
+  );
 }
 
 function MainScreen() {
@@ -27,6 +27,18 @@ function MainScreen() {
         return;
       }
 
+      // Simple email validation
+      if (!/\S+@\S+\.\S+/.test(email)) {
+        setErrorMessage('Please enter a valid email address.');
+        return;
+      }
+
+      // Basic password strength validation
+      if (password.length < 6) {
+        setErrorMessage('Password should be at least 6 characters long.');
+        return;
+      }
+
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
@@ -37,6 +49,10 @@ function MainScreen() {
       });
 
       Alert.alert('Account Created', 'Your account has been created successfully!');
+      setUsername('');
+      setEmail('');
+      setPassword('');
+      setErrorMessage('');
     } catch (error) {
       console.error('Failed to create account:', error.message);
       setErrorMessage('Failed to create account. Please try again.');
@@ -79,7 +95,49 @@ function MainScreen() {
 }
 
 const styles = StyleSheet.create({
-  // Styles here
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    padding: 20,
+  },
+  formContainer: {
+    width: '100%',
+    maxWidth: 400,
+  },
+  input: {
+    height: 40,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingLeft: 10,
+    marginBottom: 10,
+  },
+  button: {
+    backgroundColor: '#007AFF',
+    paddingVertical: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  error: {
+    color: 'red',
+    marginTop: 10,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 16,
+    marginBottom: 20,
+  },
 });
 
 export { HomeScreen, MainScreen };

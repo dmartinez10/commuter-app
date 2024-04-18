@@ -1,16 +1,4 @@
 {
-<<<<<<< Updated upstream
-    "build": {
-      "development": {
-        "distribution": "internal"
-      },
-      "production": {
-        "distribution": "store"
-      }
-    }
-  }
-  
-=======
   "cli": {
     "version": ">= 7.6.2"
   },
@@ -28,4 +16,3 @@
     "production": {}
   }
 }
->>>>>>> Stashed changes
