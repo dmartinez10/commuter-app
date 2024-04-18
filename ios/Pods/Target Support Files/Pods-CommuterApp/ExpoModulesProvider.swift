@@ -10,7 +10,6 @@ import EXConstants
 import EASClient
 import ExpoFileSystem
 import ExpoKeepAwake
-import ExpoSystemUI
 import EXUpdates
 
 @objc(ExpoModulesProvider)
@@ -21,7 +20,6 @@ public class ExpoModulesProvider: ModulesProvider {
       EASClientModule.self,
       FileSystemModule.self,
       KeepAwakeModule.self,
-      ExpoSystemUIModule.self,
       UpdatesModule.self
     ]
   }
