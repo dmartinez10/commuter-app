@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React from 'react';
 import { AppRegistry } from 'react-native';
 import App from './App';
@@ -23,4 +24,17 @@ const Root = () => <App />;
 
 // Register the main component
 AppRegistry.registerComponent(appName, () => Root);
+<<<<<<< HEAD
 
+=======
+=======
+import { registerRootComponent } from 'expo';
+
+import App from './App';
+
+// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
+// It also ensures that whether you load the app in Expo Go or in a native build,
+// the environment is set up appropriately
+registerRootComponent(App);
+>>>>>>> Stashed changes
+>>>>>>> 8ef7ca05 (Resolve merge conflicts in index.js)

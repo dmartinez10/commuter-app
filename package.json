@@ -9,9 +9,12 @@
     "build": "eas build -p all"
   },
   "dependencies": {
+    "@firebase/firestore": "^4.5.1",
     "expo": "^50.0.14",
     "expo-status-bar": "~1.11.1",
+    "expo-system-ui": "^2.9.3",
     "expo-updates": "~0.24.12",
+    "punycode": "^2.3.1",
     "react": "18.2.0",
     "react-native": "0.73.6",
     "semver": "^7.6.0"
