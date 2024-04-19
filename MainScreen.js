@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Alert, TouchableOpacity } from 'react-native';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { getFirestore, collection, addDoc, } from 'firebase/firestore';
 import { auth } from './FirebaseService'; 
 
 function MainScreen() {
@@ -27,9 +26,6 @@ function MainScreen() {
         setErrorMessage('Password should be at least 6 characters long.');
         return;
       }
-
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
 
       await addDoc(collection(db, "users"), {
         uid: user.uid,
