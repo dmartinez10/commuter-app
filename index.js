@@ -1,6 +1,7 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import { registerRootComponent } from 'expo';
-import AppNavigator from './AppNavigator';  // Import the AppNavigator instead of App
+import AppNavigator from './AppNavigator';
 import { initializeApp } from '@firebase/app';
 
 // Firebase configuration and initialization
@@ -12,9 +13,12 @@ const firebaseConfig = {
   messagingSenderId: "260305041607",
   appId: "your-app-id",
 };
+
+// Initialize Firebase
 initializeApp(firebaseConfig);
 
 // Register the main component with Expo
-registerRootComponent(AppNavigator);  // Directly use AppNavigator
+registerRootComponent(AppNavigator);
+
 
 
