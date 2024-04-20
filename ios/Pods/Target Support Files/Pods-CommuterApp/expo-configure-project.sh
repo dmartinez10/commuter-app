@@ -47,4 +47,4 @@ with_node \
   generate-modules-provider  \
   --target "/Users/david/CommuterApp/CommuterApp/ios/Pods/Target Support Files/Pods-CommuterApp/ExpoModulesProvider.swift" \
   --platform "apple" \
-  --packages "expo-constants" "expo-eas-client" "expo-file-system" "expo-keep-awake" "expo-updates"
+  --packages "expo-constants" "expo-eas-client" "expo-file-system" "expo-keep-awake" "expo-system-ui" "expo-updates"

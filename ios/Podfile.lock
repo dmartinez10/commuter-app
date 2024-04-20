@@ -3,27 +3,27 @@ PODS:
   - DoubleConversion (1.1.6)
   - EASClient (0.11.2):
     - ExpoModulesCore
-  - EXConstants (15.4.5):
+  - EXConstants (15.4.6):
     - ExpoModulesCore
   - EXFont (11.10.3):
     - ExpoModulesCore
   - EXJSONUtils (0.12.3)
   - EXManifests (0.13.2):
     - ExpoModulesCore
-  - Expo (50.0.14):
+  - Expo (50.0.17):
     - ExpoModulesCore
-  - ExpoFileSystem (16.0.8):
+  - ExpoFileSystem (16.0.9):
     - ExpoModulesCore
   - ExpoKeepAwake (12.8.2):
     - ExpoModulesCore
-  - ExpoModulesCore (1.11.12):
+  - ExpoModulesCore (1.11.13):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
     - React-NativeModulesApple
     - React-RCTAppDelegate
     - ReactCommon/turbomodule/core
-  - ExpoSystemUI (2.9.3):
+  - ExpoSystemUI (2.9.4):
     - ExpoModulesCore
   - EXStructuredHeaders (3.7.2)
   - EXUpdates (0.24.12):
@@ -1053,6 +1053,10 @@ PODS:
     - React-jsi (= 0.73.6)
     - React-logger (= 0.73.6)
     - React-perflogger (= 0.73.6)
+  - RNGestureHandler (2.16.0):
+    - glog
+    - RCT-Folly (= 2022.05.16.00)
+    - React-Core
   - SocketRocket (0.6.1)
   - sqlite3 (3.42.0):
     - sqlite3/common (= 3.42.0)
@@ -1121,6 +1125,7 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1249,6 +1254,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1256,15 +1263,15 @@ SPEC CHECKSUMS:
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
   EASClient: a42ee8bf36c93b3128352faf2ae49405ab4f80bd
-  EXConstants: 988aa430ca0f76b43cd46b66e7fae3287f9cc2fc
+  EXConstants: a5f6276e565d98f9eb4280f81241fc342d641590
   EXFont: f20669cb266ef48b004f1eb1f2b20db96cd1df9f
   EXJSONUtils: 5c42959e87be238b045ef37cc5268b16a6c0ad4a
   EXManifests: 5e8c29f36c716af768a4ea47ec05e1b89ab93091
-  Expo: e01a77c6fa4bc80a6d1bb949cda1d12d21044abd
-  ExpoFileSystem: eecaf6796aed0f4dd20042dc2ca2cac6c4bc1185
+  Expo: 2cdb5916749a1509cf88114f1f510bd458630eb4
+  ExpoFileSystem: 74cc0fae916f9f044248433971dcfc8c3befd057
   ExpoKeepAwake: 0f5cad99603a3268e50af9a6eb8b76d0d9ac956c
-  ExpoModulesCore: 61dc57c6e2a35f2f84baf488146db624e03af4cd
-  ExpoSystemUI: 40e222dd9d52222fe1bce389724ac52e662158dc
+  ExpoModulesCore: 4a8928a228569301ac4fc4a1e846713e05754d05
+  ExpoSystemUI: 735278045c1a28de0018a300bb5abb3f9090652b
   EXStructuredHeaders: 5b0f47259db047dc1fdfa84752e292c2bfa68ecd
   EXUpdates: 17e26679a93e626b0ae3ebbff966cd7021413a0a
   EXUpdatesInterface: 3e444e2093e25b7ca0999a7d8c16e8392dee70c3
@@ -1314,6 +1321,7 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 9daefa990db62f8874bc9d6e7e504272c6b6c57f
   React-utils: d16c1d2251c088ad817996621947d0ac8167b46c
   ReactCommon: 447281ad2034ea3252bf81a60d1f77d5afb0b636
+  RNGestureHandler: bc2cdb2dc42facdf34992ae364b8a728e19a3686
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   sqlite3: f163dbbb7aa3339ad8fc622782c2d9d7b72f7e9c
   Yoga: 805bf71192903b20fc14babe48080582fee65a80
