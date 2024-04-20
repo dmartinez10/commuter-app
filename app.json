@@ -20,32 +20,14 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.CommuterApp",
-      "associatedDomains": ["applinks:yourdomain.com"]
+      "bundleIdentifier": "com.anonymous.CommuterApp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.CommuterApp",
-      "intentFilters": [
-        {
-          "action": "VIEW",
-          "autoVerify": true,
-          "data": [
-            {
-              "scheme": "https",
-              "host": "yourdomain.com",
-              "pathPrefix": "/path"
-            }
-          ],
-          "category": [
-            "BROWSABLE",
-            "DEFAULT"
-          ]
-        }
-      ]
+      "package": "com.anonymous.CommuterApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -57,4 +39,3 @@
     }
   }
 }
-

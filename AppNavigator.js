@@ -1,20 +1,20 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import HomeScreen from './HomeScreen';
-import MainScreen from './MainScreen';
+import { createStackNavigator } from '@react-navigation/stack';
+import SomeScreen from './SomeScreen'; // Example screen
 
 const Stack = createStackNavigator();
 
 function AppNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Main">
-        <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={SomeScreen} />
+        // Other screens
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
 export default AppNavigator;
+

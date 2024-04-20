@@ -1,24 +1,20 @@
-import 'react-native-gesture-handler';
 import React from 'react';
-import { registerRootComponent } from 'expo';
-import AppNavigator from './AppNavigator';
-import { initializeApp } from '@firebase/app';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './HomeScreen'; // Example screen
 
-// Firebase configuration and initialization
-const firebaseConfig = {
-  apiKey: "your-newly-generated-api-key",
-  authDomain: "commuterapp-ebf55.firebaseapp.com",
-  projectId: "commuterapp-ebf55",
-  storageBucket: "commuterapp-ebf55.appspot.com",
-  messagingSenderId: "260305041607",
-  appId: "your-app-id",
-};
+const Stack = createStackNavigator();
 
-// Initialize Firebase
-initializeApp(firebaseConfig);
+function AppNavigator() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={SomeScreen} />
+        // Other screens
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
-// Register the main component with Expo
-registerRootComponent(AppNavigator);
-
-
+export default AppNavigator;
 
