@@ -25,26 +25,26 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Main"  // Set the initial screen
+        initialRouteName="Main"
         screenOptions={{
           headerStyle: {
-            backgroundColor: '#f4511e', // Customize the header with a custom color
+            backgroundColor: '#f4511e', 
           },
-          headerTintColor: '#fff', // Customizes the color of header text
+          headerTintColor: '#fff',
           headerTitleStyle: {
-            fontWeight: 'bold', // Make header titles bold
+            fontWeight: 'bold', 
           },
         }}
       >
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'Welcome to The CommuterApp' }} // Customize title for HomeScreen
+          options={{ title: 'Welcome to The CommuterApp' }}
         />
         <Stack.Screen
           name="Main"
           component={MainScreen}
-          options={{ title: 'Login or Sign Up to The CommuterApp' }} // Customize title for MainScreen
+          options={{ title: 'Login or Sign Up to The CommuterApp' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

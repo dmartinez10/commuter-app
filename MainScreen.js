@@ -94,7 +94,7 @@ function MainScreen() {
   );
 }
 
-// Add your styles here
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -2,9 +2,9 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
-// Your Firebase configuration
+//Firebase configuration
 const firebaseConfig = {
-  // Your config values
+  // config values
 };
 
 // Initialize Firebase
