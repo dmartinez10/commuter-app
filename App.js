@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { initializeApp } from '@firebase/app';
-import 'react-native-gesture-handler';
+//import 'react-native-gesture-handler';
 import HomeScreen from './HomeScreen';
 import MainScreen from './MainScreen';
 
