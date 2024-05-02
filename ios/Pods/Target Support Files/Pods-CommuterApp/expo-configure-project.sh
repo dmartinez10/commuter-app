@@ -45,6 +45,6 @@ with_node \
   --no-warnings \
   --eval "require(require.resolve('expo-modules-autolinking', { paths: [require.resolve('expo/package.json')] }))(process.argv.slice(1))" \
   generate-modules-provider  \
-  --target "/Users/david/CommuterApp/CommuterApp/ios/Pods/Target Support Files/Pods-CommuterApp/ExpoModulesProvider.swift" \
+  --target "/Users/david/commuter-app/ios/Pods/Target Support Files/Pods-CommuterApp/ExpoModulesProvider.swift" \
   --platform "apple" \
   --packages "expo-constants" "expo-eas-client" "expo-file-system" "expo-keep-awake" "expo-system-ui" "expo-updates"

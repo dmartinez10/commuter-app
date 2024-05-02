@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Alert, TouchableOpacity, ActivityIndicator } from 'react-native';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 import { sha256 } from 'js-sha256';
 import { useNavigation } from '@react-navigation/native';
 
 function MainScreen() {
-  const [username, setUsername] = useState('');
+  const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -13,41 +13,27 @@ function MainScreen() {
   const db = getFirestore(); 
   const navigation = useNavigation();
 
-  const handleCreateAccount = async () => {
-    if (!username || !email || !password) {
+  const handleLogin = async () => {
+    if (!email || !password) {
       setErrorMessage('Please fill out all fields.');
       return;
     }
 
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      setErrorMessage('Please enter a valid email address.');
-      return;
-    }
-
-    if (password.length < 10) {
-      setErrorMessage('Password should be at least 10 characters long.');
-      return;
-    }
-
     setIsLoading(true);
-    try {
-      const hashedPassword = sha256(password);
-      await addDoc(collection(db, "users"), {
-        username: username,
-        email: email,
-        password: hashedPassword
-      });
+    const usersRef = collection(db, "user");
+    const q = query(usersRef, where("Email", "==", email));
+    const querySnapshot = await getDocs(q);
 
-      Alert.alert('Account Created', 'Your account has been created successfully!', [
-        { text: "OK", onPress: () => navigation.navigate('Home') }
-      ]);
-      setUsername('');
-      setEmail('');
-      setPassword('');
-    } catch (error) {
-      console.error('Failed to create account:', error.message);
-      setErrorMessage('Failed to create account. Please try again.');
-    } finally {
+    if (querySnapshot.empty) {
+      setErrorMessage('No such user found.');
+      setIsLoading(false);
+    } else {
+      const userData = querySnapshot.docs[0].data();
+      if (userData.Password === sha256(password)) { // Compare hashed password
+        navigation.navigate('Home');
+      } else {
+        setErrorMessage('Incorrect password.');
+      }
       setIsLoading(false);
     }
   };
@@ -61,9 +47,9 @@ function MainScreen() {
           <>
             <TextInput
               style={styles.input}
-              placeholder="Username"
-              onChangeText={setUsername}
-              value={username}
+              placeholder="User Name (optional)"
+              onChangeText={setUserName}
+              value={userName}
             />
             <TextInput
               style={styles.input}
@@ -81,10 +67,10 @@ function MainScreen() {
             />
             <TouchableOpacity
               style={styles.button}
-              onPress={handleCreateAccount}
+              onPress={handleLogin}  // Changed to handleLogin
               disabled={isLoading}
             >
-              <Text style={styles.buttonText}>Create Account</Text>
+              <Text style={styles.buttonText}>Log In</Text>
             </TouchableOpacity>
             {errorMessage !== '' && <Text style={styles.error}>{errorMessage}</Text>}
           </>
@@ -93,7 +79,6 @@ function MainScreen() {
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -108,7 +93,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-    elevation: 3, // for Android shadow
+    elevation: 3,
   },
   input: {
     height: 50,
@@ -139,6 +124,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   }
 });
-
 
 export default MainScreen;
