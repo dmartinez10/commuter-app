@@ -10,7 +10,8 @@
     "build": "eas build -p all"
   },
   "dependencies": {
-    "@expo/metro-config": "~0.17.1",
+    "@expo/config": "^8.1.1",
+    "@expo/metro-config": "^0.10.0",
     "@firebase/app": "^0.10.1",
     "@firebase/firestore": "^4.5.1",
     "@react-navigation/native": "^6.1.17",
